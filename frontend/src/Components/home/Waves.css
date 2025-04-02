@@ -1,0 +1,148 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300:400:bold); /* Importing Google Fonts */
+
+body {
+  margin: 0; /* Removing margin */
+  padding: 0; /* Removing padding */
+  box-sizing: border-box; /* Ensures padding and border are included in total width and height */
+}
+
+h1 {
+  font-family: "Lato", sans-serif; /* Setting the font for the heading */
+  font-weight: bold; /* Bold text */
+  letter-spacing: 2px; /* Adding spacing between characters */
+  font-size: 48px; /* Setting large font size for desktop */
+}
+
+.header {
+  position: relative;
+  text-align: center; /* Centering text */
+  /* Adding gradient background animation */
+  background: linear-gradient(-45deg, #30cfd0, #667eea, #764ba2, #330867);
+  background-size: 400% 400%; /* Allowing the background to move */
+  animation: gradient 15s ease infinite; /* Animating the gradient */
+  color: white; /* Text color white */
+}
+
+.inner-header {
+  height: 65vh; /* The height is 65% of the viewport */
+  width: 100%; /* Full width */
+  display: flex; /* Using flexbox for centering content */
+  justify-content: center; /* Horizontally centering content */
+  align-items: center; /* Vertically centering content */
+  text-align: center; /* Text aligned to the center */
+}
+
+.waves {
+  position: relative;
+  width: 100%; /* Full width */
+  height: 15vh; /* The height is 15% of the viewport */
+  margin-bottom: -7px; /* Fixes a gap issue for Safari */
+  min-height: 100px; /* Minimum height */
+  max-height: 150px; /* Maximum height */
+}
+
+/* Animation for wave parallax */
+.wave-parallax > use {
+  /* Infinite animation to move the waves */
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+/* Animating different wave layers at varying speeds */
+.wave-parallax > use:nth-child(1) {
+  animation-delay: -2s; /* Delayed by 2 seconds */
+  animation-duration: 7s; /* Animation duration is 7 seconds */
+}
+.wave-parallax > use:nth-child(2) {
+  animation-delay: -3s; /* Delayed by 3 seconds */
+  animation-duration: 10s; /* Animation duration is 10 seconds */
+}
+.wave-parallax > use:nth-child(3) {
+  animation-delay: -4s; /* Delayed by 4 seconds */
+  animation-duration: 13s; /* Animation duration is 13 seconds */
+}
+.wave-parallax > use:nth-child(4) {
+  animation-delay: -5s; /* Delayed by 5 seconds */
+  animation-duration: 20s; /* Animation duration is 20 seconds */
+}
+
+/* Animation for the wave movement */
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0); /* Starting position */
+  }
+  100% {
+    transform: translate3d(85px, 0, 0); /* Ending position */
+  }
+}
+
+/* Animation for the background gradient */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%; /* Starting position of the gradient */
+  }
+  50% {
+    background-position: 100% 50%; /* Midway position of the gradient */
+  }
+  100% {
+    background-position: 0% 50%; /* Ending position of the gradient */
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .waves {
+    height: 40px; /* Reducing wave height on mobile */
+    min-height: 40px;
+  }
+  .content {
+    height: 30vh; /* Adjusting content height for smaller screens */
+  }
+  h1 {
+    font-size: 24px; /* Smaller font size for mobile devices */
+  }
+}
+
+/* Subscribe button styles */
+.subscribe-btn {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: var(--accent-color);
+}
+
+/* SVG inside subscribe button */
+.subscribe-btn svg {
+  height: 60px;
+  width: 60px;
+}
+
+/* Floating YouTube Button Styling */
+.youtube-button {
+  position: fixed;
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  background-color: #ff0000; /* YouTube red color */
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+/* Icon Styling */
+.youtube-button i {
+  font-size: 24px;
+}
+
+/* Hover Effect */
+.youtube-button:hover {
+  background-color: #e60000; /* Darker shade of red */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px); /* Slight upward movement */
+}

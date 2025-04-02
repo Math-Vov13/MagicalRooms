@@ -1,0 +1,67 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.FirstContent {
+  margin-bottom: 10%;
+}
+
+.logo {
+  top: 0px;
+  margin-bottom: 50px;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #540863aa);
+}
+
+.wave-image {
+  width: 100%;
+  height: 100%;
+}
+
+.button-container {
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+  max-width: fit-content;
+  display: grid;
+  gap: 10px;
+}
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
