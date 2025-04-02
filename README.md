@@ -1,6 +1,6 @@
 # MagicalRooms
 
-### <u>MagicalRoom</u> is a simple ChatRoom project. With somme magic tricks 🧙‍♂️ (or not...)
+### <u>MagicalRoom</u> is a simple ChatRoom project. With some magic tricks 🧙‍♂️ (or not...)
 ![img](./frontend/public/big-logo-2.png)
 
 ## Why this project ?
