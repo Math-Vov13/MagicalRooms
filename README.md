@@ -6,10 +6,8 @@
 ## Why this project ?
 This project was developed in 5 days and was initially created to learn basics of **<u>ReactJS</u>**
 But you know, I love challenges. So I decided to make it bigger and add a solid backend in TypeScript.
-So I started to learn ReactJS Frontend and Security from Backend + Matchmaking.
+Finally, I started to learn ReactJS Frontend and Security from Backend + Matchmaking.
 And... Yeah It's starting to look like a big project now. 😎
-
-(I know, I'm always like that... Don't worry about it)
 
 ## 🤖 Technologies
 > FRONTEND

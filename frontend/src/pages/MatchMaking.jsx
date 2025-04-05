@@ -88,15 +88,6 @@ function MatchMaking() {
             }, 2000);
         });
 
-        // socketRef.current.on("system", ( data ) => {
-        //     console.log("System message:", data)
-        //     if (data.closed)
-        // })
-
-        socketRef.current.on('message', (msg) => {
-            setMessages(prevMessages => [...prevMessages, msg]);
-        });
-
         // Nettoyage à la déconnexion
         return () => {
             socketRef.current.disconnect();

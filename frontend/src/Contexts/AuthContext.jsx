@@ -1,6 +1,4 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
-import { useNavigate } from "react-router";
-
 import api from "../api";
 
 export const AuthContext = createContext()
@@ -15,16 +13,6 @@ export const useAuth = () => {
     return authContext;
 }
 
-// export const authReducer = (state, action) => {
-//     switch (action.type) {
-//         case 'LOGIN':
-//             return { user: action.payload }
-//         case 'LOGOUT':
-//             return { user: null }
-//         default:
-//             return state
-//     }
-// }
 
 export const AuthContextProvider = ({ children }) => {
     const [lastConnection, setNewConnection] = useState()
@@ -40,12 +28,14 @@ export const AuthContextProvider = ({ children }) => {
 
     async function getProfile(userid) {
         if (userid && token) {
-            if (localStorage.getItem(userid)) {
-                return localStorage.getItem(userid);
-            }
             try {
-                const response = await api.get(`/users/profile/${userid}`);
-                localStorage.setItem(userid, response.data);
+                const response = await api.get(`/users/profile/${userid}`); // Peut être remplacé par du GraphQL
+
+                if (userid === "me") {
+                    setProfile(response.data);
+                    localStorage.setItem("Username", response.data.username);
+                }
+
                 return response.data;
             } catch (err) {
                 console.error(err);

@@ -9,7 +9,7 @@ import { useAuth } from '../Contexts/AuthContext';
 
 const ChatRoom = () => {
   const { roomId } = useParams();
-  const { token, getProfile } = useAuth();
+  const { token, profile } = useAuth();
 
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
@@ -20,25 +20,25 @@ const ChatRoom = () => {
   const [serverConnected, setServerConnected] = useState(false);
   const [clientConnected, setClientConnected] = useState(false);
 
-  const navigate = useNavigate();
   const socketRef = useRef();
   const messagesEndRef = useRef(null);
 
-  document.title = `Room - ${roomId}`
+  document.title = `Room (${roomId})`
+
 
   // Set Profile
   useEffect(() => {
-    const fetchData = async () => {
-      const usrname = await getProfile("me")
-      setUsername(usrname);
+    const usrn = localStorage.getItem("Username");
+    if (!usrn) {
+      console.warn("User has not been registered before!");
+      return;
     }
 
-    console.log("token:", token);
-    if (!token) {
-    } else {
-      fetchData();
-    }
-  }, [])
+    console.log("Vous êtes :", usrn);
+    setUsername(usrn);
+
+  }, [profile])
+
 
   // Initialisation du socket
   useEffect(() => {
@@ -55,15 +55,6 @@ const ChatRoom = () => {
       timeout: 20000 // Connection timeout before failing (in ms)
     });
 
-    // Pour l'authentification avec le WebSocket
-    // socketRef.current.on("auth", (callback) => {
-    //   console.log("Acknowledge received!")
-    //   callback({
-    //     token: token,
-    //     room: roomId
-    //   })
-    // })
-
     // Gestion des événements socket
     socketRef.current.on('connect', () => {
       console.log('Connected to server');
@@ -78,11 +69,11 @@ const ChatRoom = () => {
         case "User is not connected!":
           setClientConnected(false)
           break;
-        
+
         case "User is not connected to a room!":
           setAccess(false);
           break;
-        
+
         default:
           setServerConnected(false);
           console.log("Internal Server Error");
@@ -144,14 +135,6 @@ const ChatRoom = () => {
 
     socketRef.current.emit('message', messageData);
     setNewMessage('');
-  };
-
-  const handleUsernameSubmit = (e) => {
-    e.preventDefault();
-    if (username.trim() === '') return;
-
-    socketRef.current.emit('user join', { username });
-    setShowUsernameModal(false);
   };
 
   return (
